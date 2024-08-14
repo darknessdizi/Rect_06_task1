@@ -5,33 +5,44 @@ import { Form } from './components/Form/Form';
 function App() {
   const [formValue, setFormValue] = useState({
     title: '',
-    zone: '',
+    zona: '',
   })
 
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log(event.target);
-    console.log('новые часы', formValue.title, formValue.zone);
+    console.log('новые часы', formValue.title, formValue.zona);
     setFormValue({
       ...formValue,
       title: '',
-      zone: '',
+      zona: '',
     });
   }
 
   const changeInput = (event) => {
-    console.log(event.target.value);
-    setFormValue({
-      ...formValue,
-      [event.target.name]: event.target.value,
-    });
+    // Обрабатываем изменение в поле input
+    const {name, value} = event.target;
+
+    if ((name === 'zona') && (Number(value))) {
+      setFormValue({
+        ...formValue,
+        [name]: value.trim(),
+      });
+    }
+
+    if (name === 'title') {
+      setFormValue({
+        ...formValue,
+        [name]: value,
+      });
+    }
   }
 
   return (
     <div className="conteiner">
 
       <div className="conteiner__form">
-        <Form title={formValue.title} zone={formValue.zone} submit={handleSubmit} change={changeInput} ></Form>
+        <Form title={formValue.title} zona={formValue.zona} submit={handleSubmit} change={changeInput} ></Form>
       </div>
       
 
