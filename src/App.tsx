@@ -1,29 +1,38 @@
 import { useState } from 'react';
 import './App.css';
+import { Clock } from './components/Clock/Clock';
 import { Form } from './components/Form/Form';
 
 function App() {
   const [formValue, setFormValue] = useState({
     title: '',
-    zona: '',
+    zone: '',
+    arrayClock: [],
   })
 
   const handleSubmit = (event) => {
+    // Нажали кнопку добавить в нашей форме
     event.preventDefault();
-    console.log(event.target);
-    console.log('новые часы', formValue.title, formValue.zona);
+    const obj = {
+      title: formValue.title,
+      zone: formValue.zone,
+    };
+
     setFormValue({
       ...formValue,
       title: '',
-      zona: '',
+      zone: '',
+      arrayClock: [...formValue.arrayClock, obj],
     });
+    console.log(formValue);
   }
 
   const changeInput = (event) => {
     // Обрабатываем изменение в поле input
     const {name, value} = event.target;
 
-    if ((name === 'zona') && (Number(value))) {
+    if (name === 'zone') {
+    // if ((name === 'zone') && (Number(value))) {
       setFormValue({
         ...formValue,
         [name]: value.trim(),
@@ -42,12 +51,12 @@ function App() {
     <div className="conteiner">
 
       <div className="conteiner__form">
-        <Form title={formValue.title} zona={formValue.zona} submit={handleSubmit} change={changeInput} ></Form>
+        <Form title={formValue.title} zone={formValue.zone} submit={handleSubmit} change={changeInput} ></Form>
       </div>
       
 
-      <div className="conteiner__count">
-        Часы
+      <div className="conteiner__clock">
+        <Clock list={formValue.arrayClock} />
       </div>
 
     </div>
