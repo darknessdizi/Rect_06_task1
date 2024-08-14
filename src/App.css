@@ -1,0 +1,40 @@
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+.conteiner {
+  margin: 30px auto;
+  width: 1000px;
+}
+
+.conteiner__form {
+  display: flex;
+  justify-content: center;
+}
+
+.block__form {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: 60%;
+
+}
+
+.form__label {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  font-size: 1em;
+}
+
+.input__label {
+  font-size: 1em;
+  height: 30px;
+}
+
+.form__btn {
+  font-size: 1em;
+  /* padding: 5px 10px; */
+  height: 30px;
+  padding: 1px 25px;
+}
