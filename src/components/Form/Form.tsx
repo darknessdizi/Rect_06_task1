@@ -1,17 +1,19 @@
-export const Form = () => {
+export const Form = (props) => {
+  const {title, zone, submit, change} = props;
+
   return (
-    <div className="block__form">
+    <form className="block__form" onSubmit={submit}>
       <label className="form__label">
-        <span>Название</span>
-        <input type="text" className="input__label" />
+        <span className="form__label__title">Название</span>
+        <input type="text" className="input__label" name="title" value={title} onChange={change} />
       </label>
 
       <label className="form__label">
-        <span>Временная зона</span>
-        <input type="text" className="input__label" />
-      </label>
+        <span className="form__label__title">Временная зона</span>
+        <input type="text" className="input__label" name="zone" value={zone} onChange={change} />
+      </label> 
 
-      <button type="button" className="form__btn">Добавить</button>
-    </div>
+      <button type="submit" className="form__btn">Добавить</button>
+    </form>
   )
 }
