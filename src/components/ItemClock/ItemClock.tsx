@@ -3,7 +3,7 @@ import { IItemClockProps } from "../../modal/modal";
 
 export const ItemClock = (props: IItemClockProps) => {
   const { title, zone, callback } = props;
-  const clock = useRef(null as HTMLElement | null); 
+  const clock = useRef<HTMLDivElement>(null); 
 
   useEffect(() => { // Начало жизненного цикла
     const day = new Date();
