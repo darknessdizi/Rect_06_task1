@@ -3,19 +3,19 @@ import { IItemClockProps } from "../../modal/modal";
 
 export const ItemClock = (props: IItemClockProps) => {
   const { title, zone, callback } = props;
-  const clock = useRef<HTMLDivElement>(); 
-
-  let day = new Date();
-  const timeZoneOffset = day.getTimezoneOffset();
-  let hour = day.getHours() + (timeZoneOffset / 60) + Number(zone);
-  let minutes = day.getMinutes();
-  let seconds = day.getSeconds();
-
-  let hrrotation = (30 * hour) + (0.5 * minutes);
-  let minrotation = 6 * minutes;
-  let secrotation = 6 * seconds;
+  const clock = useRef(null as HTMLElement | null); 
 
   useEffect(() => { // Начало жизненного цикла
+    const day = new Date();
+    const timeZoneOffset = day.getTimezoneOffset();
+    let hour = day.getHours() + (timeZoneOffset / 60) + Number(zone);
+    let minutes = day.getMinutes();
+    let seconds = day.getSeconds();
+
+    let hrrotation = (30 * hour) + (0.5 * minutes);
+    let minrotation = 6 * minutes;
+    let secrotation = 6 * seconds;
+
     const hr = clock.current?.querySelector('.hr') as HTMLElement;
     const min = clock.current?.querySelector('.min') as HTMLElement;
     const sec = clock.current?.querySelector('.sec') as HTMLElement;
