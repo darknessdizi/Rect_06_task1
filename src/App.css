@@ -119,3 +119,22 @@
   background-color: #99ff00;
   transform-origin: 50% 85%;
 }
+
+.clock__cross {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background-color: lightgray;
+  background-image: url('./cross.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border: 1px solid black;
+  border-radius: 50%;
+  right: 0;
+  top: -20px; 
+}
+
+.clock__cross:hover {
+  background-color: chartreuse;
+}

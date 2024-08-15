@@ -46,6 +46,18 @@ function App() {
     }
   }
 
+  const clickCross = (event) => {
+    // Нажали кнопку удаления часов
+    const parent = event.target.closest('.clock__item');
+    const title = parent.querySelector('.clock__title').textContent;
+    let array = [...formValue.arrayClock];
+    array = array.filter((item) => item.title != title);
+    setFormValue({
+      ...formValue,
+      arrayClock: [...array],
+    });
+  }
+
   return (
     <div className="conteiner">
 
@@ -55,7 +67,7 @@ function App() {
       
 
       <div className="conteiner__clock">
-        <Clock list={formValue.arrayClock} />
+        <Clock list={formValue.arrayClock} callback={clickCross} />
       </div>
 
     </div>

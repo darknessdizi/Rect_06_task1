@@ -1,12 +1,13 @@
 import { useEffect, useRef } from "react";
 
 export const ItemClock = (props) => {
-  const { title, zone } = props;
+  const { title, zone, callback } = props;
   const clock = useRef(); 
-  console.log('создали компонент zone= ', zone)
+  console.log('создали компонент title= ', title)
 
   let day = new Date();
-  let hour = day.getHours() + Number(zone);
+  const timeZoneOffset = day.getTimezoneOffset();
+  let hour = day.getHours() + (timeZoneOffset / 60) + Number(zone);
   let minutes = day.getMinutes();
   let seconds = day.getSeconds();
 
@@ -56,6 +57,7 @@ export const ItemClock = (props) => {
         <div className="min"></div>
         <div className="sec"></div>
         <div className="pin"></div>
+        <div className="clock__cross" onClick={callback}></div>
       </div>
     </div>
   )
