@@ -1,6 +1,10 @@
 Мировые часы
 ===
 
+[![Build status](https://ci.appveyor.com/api/projects/status/cm1uk82w5n7i5u52?svg=true)](https://ci.appveyor.com/project/darknessdizi/rect-06-task1)
+
+*Ссылка на страницу:* https://darknessdizi.github.io/Rect_06_task1/
+
 Наверняка вы видели в офисах многих компаний установленные часы, показывающие время в разных столицах мира:
 * New York,
 * Moscow,
