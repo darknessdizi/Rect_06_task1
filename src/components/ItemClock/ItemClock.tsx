@@ -11,6 +11,7 @@ export const ItemClock = (props: IItemClockProps) => {
     let hour = day.getHours() + (timeZoneOffset / 60) + Number(zone);
     let minutes = day.getMinutes();
     let seconds = day.getSeconds();
+    // console.log('begin' , title)
 
     let hrrotation = (30 * hour) + (0.5 * minutes);
     let minrotation = 6 * minutes;
@@ -38,12 +39,14 @@ export const ItemClock = (props: IItemClockProps) => {
       min.style.transform = `translate(-50%,-100%) rotate(${minrotation}deg)`;
       sec.style.transform = `translate(-50%,-85%) rotate(${secrotation}deg)`;
       idTimer = window.setTimeout(timer, 1000);
+      // console.log('timer' , idTimer)
     }, 1000);
 
     return () => { // Конец жизненного цикла, очищаем таймер
+      // console.log('end' , idTimer)
       window.clearTimeout(idTimer);
     }
-  }, []) 
+  }, [zone]) 
 
   return (
     <div className="clock__item">
