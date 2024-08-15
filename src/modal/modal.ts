@@ -1,67 +1,29 @@
-export interface ITitleProps {
-  title: string | ({
-    text: string,
-    link: string,
-  })[],
-  active?: number | boolean,
-  curentClass?: string,
-  children?: React.ReactNode,
-  link?: string,
-}
-
-export interface IWidgetSearchProps {
-  menu: string | ({
-    text: string,
-    link: string,
+export interface IAppState {
+  title: string,
+  zone: string,
+  arrayClock: ({
+    title: string,
+    zone: string,
   })[],
 }
 
-export interface ICloudProps {
-  children?: React.ReactNode, 
-  icon: string,
-  degree: string, 
-  morning: string, 
-  day: string,
-}
-
-export interface IItemListProps {
-  text: string,
-  icon?: string,
-  children?: React.ReactNode,
-  weigth?: number,
-  nextTxt?: string,
-  color?: string,
-}
-
-export interface IItemRatesProps {
-  item: {
-    label: string,
-    price: string,
-    increment: string,
-  }
-}
-
-export interface IWidgetAdvertisingProps {
-  img: string,
-  text: string,
-  info: string,
-}
-
-export interface IWidgetExchangeRatesProps {
+export interface IClockProps {
   list: ({
-    label: string,
-    price: string,
-    increment: string,
-  })[]
+    title: string,
+    zone: string,
+  })[],
+  callback: (event: React.ChangeEvent<HTMLDivElement>) => void,
 }
 
-export interface IWidgetListProps {
-  list: ({
-    body: string,
-    icon?: string,
-    info?: string,
-    color?: string,
-  })[],
-  children?: React.ReactNode,
-  weigth?: number,
+export interface IItemClockProps {
+  title: string,
+  zone: string,
+  callback: (event: React.ChangeEvent<HTMLDivElement>) => void,
+}
+
+export interface IFormProps {
+  title: string,
+  zone: string,
+  submit: (event: React.ChangeEvent<HTMLFormElement>) => void,
+  change: (event: React.ChangeEvent<HTMLInputElement>) => void,
 }

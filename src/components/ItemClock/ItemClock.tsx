@@ -1,9 +1,9 @@
 import { useEffect, useRef } from "react";
+import { IItemClockProps } from "../../modal/modal";
 
-export const ItemClock = (props) => {
+export const ItemClock = (props: IItemClockProps) => {
   const { title, zone, callback } = props;
-  const clock = useRef(); 
-  console.log('создали компонент title= ', title)
+  const clock = useRef<HTMLDivElement>(); 
 
   let day = new Date();
   const timeZoneOffset = day.getTimezoneOffset();
@@ -15,16 +15,16 @@ export const ItemClock = (props) => {
   let minrotation = 6 * minutes;
   let secrotation = 6 * seconds;
 
-  useEffect(() => {
-    const hr = clock.current?.querySelector('.hr');
-    const min = clock.current?.querySelector('.min');
-    const sec = clock.current?.querySelector('.sec');
+  useEffect(() => { // Начало жизненного цикла
+    const hr = clock.current?.querySelector('.hr') as HTMLElement;
+    const min = clock.current?.querySelector('.min') as HTMLElement;
+    const sec = clock.current?.querySelector('.sec') as HTMLElement;
 
     hr.style.transform = `translate(-50%,-100%) rotate(${hrrotation}deg)`;
     min.style.transform = `translate(-50%,-100%) rotate(${minrotation}deg)`;
     sec.style.transform = `translate(-50%,-85%) rotate(${secrotation}deg)`;
 
-    let idTimer = window.setTimeout(function timer() { // таймер
+    let idTimer = window.setTimeout(function timer() { // таймер для компонента
       seconds = (seconds === 59) ? 0 : seconds + 1;
       minutes = (seconds === 0) ? minutes + 1 : minutes;
       hour = (minutes === 60) ? hour + 1 : hour;
@@ -38,13 +38,9 @@ export const ItemClock = (props) => {
       min.style.transform = `translate(-50%,-100%) rotate(${minrotation}deg)`;
       sec.style.transform = `translate(-50%,-85%) rotate(${secrotation}deg)`;
       idTimer = window.setTimeout(timer, 1000);
-      console.log('часы =', idTimer, ': ', hour, minutes, seconds);
     }, 1000);
 
-    console.log('создали таймер ', idTimer);
-
-    return () => {
-      console.log('закрываем ', idTimer);
+    return () => { // Конец жизненного цикла, очищаем таймер
       window.clearTimeout(idTimer);
     }
   }, []) 

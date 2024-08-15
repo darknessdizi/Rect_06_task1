@@ -1,4 +1,6 @@
-export const Form = (props) => {
+import { IFormProps } from "../../modal/modal";
+
+export const Form = (props: IFormProps) => {
   const {title, zone, submit, change} = props;
 
   return (
