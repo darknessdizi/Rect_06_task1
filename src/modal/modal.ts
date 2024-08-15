@@ -12,13 +12,13 @@ export interface IClockProps {
     title: string,
     zone: string,
   })[],
-  callback: (event: React.ChangeEvent<HTMLDivElement>) => void,
+  callback: (event: React.ChangeEvent<HTMLElement>) => void,
 }
 
 export interface IItemClockProps {
   title: string,
   zone: string,
-  callback: (event: React.ChangeEvent<HTMLDivElement>) => void,
+  callback: (event: React.ChangeEvent<HTMLElement>) => void,
 }
 
 export interface IFormProps {
