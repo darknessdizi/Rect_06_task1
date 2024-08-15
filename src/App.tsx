@@ -32,7 +32,6 @@ function App() {
     const {name, value} = event.target;
 
     if (name === 'zone') {
-    // if ((name === 'zone') && (Number(value))) {
       setFormValue({
         ...formValue,
         [name]: value.trim(),

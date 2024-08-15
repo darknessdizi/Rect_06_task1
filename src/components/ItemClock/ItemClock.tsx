@@ -3,7 +3,7 @@ import { useEffect, useRef } from "react";
 export const ItemClock = (props) => {
   const { title, zone } = props;
   const clock = useRef(); 
-  console.log('создали компонент', zone)
+  console.log('создали компонент zone= ', zone)
 
   let day = new Date();
   let hour = day.getHours() + Number(zone);
@@ -23,7 +23,7 @@ export const ItemClock = (props) => {
     min.style.transform = `translate(-50%,-100%) rotate(${minrotation}deg)`;
     sec.style.transform = `translate(-50%,-85%) rotate(${secrotation}deg)`;
 
-    const idTimer = setTimeout(function timer() { // таймер
+    let idTimer = window.setTimeout(function timer() { // таймер
       seconds = (seconds === 59) ? 0 : seconds + 1;
       minutes = (seconds === 0) ? minutes + 1 : minutes;
       hour = (minutes === 60) ? hour + 1 : hour;
@@ -36,14 +36,15 @@ export const ItemClock = (props) => {
       hr.style.transform = `translate(-50%,-100%) rotate(${hrrotation}deg)`;
       min.style.transform = `translate(-50%,-100%) rotate(${minrotation}deg)`;
       sec.style.transform = `translate(-50%,-85%) rotate(${secrotation}deg)`;
-      setTimeout(timer, 1000);
+      idTimer = window.setTimeout(timer, 1000);
+      console.log('часы =', idTimer, ': ', hour, minutes, seconds);
     }, 1000);
 
     console.log('создали таймер ', idTimer);
 
     return () => {
       console.log('закрываем ', idTimer);
-      clearTimeout(idTimer);
+      window.clearTimeout(idTimer);
     }
   }, []) 
 
@@ -59,10 +60,3 @@ export const ItemClock = (props) => {
     </div>
   )
 }
-
-
-// function clockTimer(hr, min, sec) {
-//   const idTimer = setTimeout(() => {
-
-//   });
-// }
