@@ -70,7 +70,8 @@
 .clock {
   width: 180px;
   height: 180px;
-  background-image: linear-gradient(70deg, black, white);
+  /* background-image: linear-gradient(70deg, black, white); */
+  background-image: url('./img/clock.png');
   background-size: cover;
   border-radius: 50%;
   position: relative;
@@ -124,7 +125,7 @@
   position: absolute;
   width: 30px;
   height: 30px;
-  background-color: lightgray;
+  background-color: white;
   background-image: url('./img/cross.png');
   background-position: center;
   background-repeat: no-repeat;
